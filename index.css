@@ -1,0 +1,75 @@
+@font-face {
+  font-family: FuturaNo2SCDEEBoo;
+  src: url(FuturaNo2SCDEEBoo.ttf);
+}
+.navbar_aqua ul {
+  font-size: 25px;
+  font-family: FuturaNo2SCDEEBoo;
+  text-align: center;
+  font-weight: bold;
+}
+.navbar_aqua li a:hover {
+  text-decoration: underline;
+}
+.carousel_aqua {
+  padding-top: 9rem;
+}
+.grid_pertama p {
+  font-size: 80px;
+  font-family: FuturaNo2SCDEEBoo;
+  font-weight: bold;
+  color: rgb(7, 45, 170);
+}
+.grid_pertama {
+  background-image: url("BackgroundBiruPutih.jpg");
+}
+.grid_kedua p {
+  font-size: 30px;
+  font-family: FuturaNo2SCDEEBoo;
+  color: rgb(7, 45, 170);
+}
+.grid_kedua {
+  background-image: url("BackgroundPutihBiru.jpg");
+}
+.grid_ketiga p {
+  font-size: 30px;
+  font-family: FuturaNo2SCDEEBoo;
+  color: aliceblue;
+}
+.grid_ketiga h1 {
+  color: rgb(42, 207, 248);
+  font-family: FuturaNo2SCDEEBoo;
+  font-weight: bolder;
+}
+.grid_ketiga {
+  background-image: url("GambarGunung.jpg");
+}
+.produk_lainnya {
+  background-color: rgb(7, 45, 170);
+  text-decoration: none;
+  color: white;
+  border: 5px solid rgb(7, 45, 170);
+  border-radius: 40px;
+  padding: 15px;
+  font-size: 20px;
+  font-family: FuturaNo2SCDEEBoo;
+}
+.grid_keempat p {
+  font-family: FuturaNo2SCDEEBoo;
+  font-size: 25px;
+}
+.grid_keempat h1 {
+  font-family: FuturaNo2SCDEEBoo;
+}
+.footer_aqua {
+  background-image: url("BackgroundFooter.jpg");
+}
+.footer_aqua a {
+  font-family: FuturaNo2SCDEEBoo;
+  font-size: 30px;
+  color: aliceblue;
+}
+.footer_aqua h1 {
+  font-family: FuturaNo2SCDEEBoo;
+  color: aliceblue;
+}

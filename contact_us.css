@@ -1,0 +1,28 @@
+@font-face {
+  font-family: FuturaNo2SCDEEBoo;
+  src: url(FuturaNo2SCDEEBoo.ttf);
+}
+.navbar_aqua ul {
+  font-size: 25px;
+  font-family: FuturaNo2SCDEEBoo;
+  text-align: center;
+  font-weight: bold;
+}
+.navbar_aqua li a:hover {
+  text-decoration: underline;
+}
+.footer_aqua {
+  background-image: url("BackgroundFooter.jpg");
+}
+.footer_aqua a {
+  font-family: FuturaNo2SCDEEBoo;
+  font-size: 30px;
+  color: aliceblue;
+}
+.footer_aqua h1 {
+  font-family: FuturaNo2SCDEEBoo;
+  color: aliceblue;
+}
+.contact {
+  background-image: url("BackgroundPutihBiru.jpg");
+}
