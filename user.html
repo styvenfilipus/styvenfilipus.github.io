@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.png" />
+    <title>AMOL | Laundry Bersama Kami</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
+    <style>
+      body{
+        background:linear-gradient(135deg,rgb(70, 145, 216),rgb(82, 156, 235));
+        font-family: 'Lobster', cursive;
+      }
+      table{
+        background:linear-gradient(120deg,azure,rgb(107, 191, 230));
+        font-family: 'Lobster', cursive;
+        
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm pt-3 text-md-start" style="background:linear-gradient(135deg,rgb(11, 157, 241),rgb(42, 175, 142)) ; font-style: italic; font-family: 'Lobster', cursive">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img src="logo_transparent.png" alt="" width="70" height="50" />
+        </a>
+        <a class="navbar-brand" href="index.html">AMOL</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="user.html">User</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pelanggan.html">Pelanggan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="order.html">Orderan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="jenis_paket_orderan.html">Paket & Jenis Orderan</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Input dan Output Data -->
+    <div id="app">
+
+        <div class="container">
+            <div class="py-5 text-center">
+              <h2>Tabel User "AMOL"</h2>
+            </div>
+      
+              <div class="col-md-12">
+                <h4 class="mb-3">Data User
+                </h4>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Id User</th>
+                        <th>Nama</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>Tipe User</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tr v-for="user in users">
+                        <td>{{ user.idUser }}</td>
+                        <td>{{ user.namaLengkap }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.password }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.tipeUser }}</td>
+                        <td><button class="btn btn-md btn-warning" v-on:click="getEdit(user)">Edit</button></td>
+                        <td><button class="btn btn-danger" v-on:click="getDelete(user)">Delete</button></td>
+                    </li>
+                </table>
+
+                <div v-if="message" class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+                
+            
+                <h4 class="mb-3">User Information</h4>
+                <form class="needs-validation" novalidate>
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="namaLengkap">Nama</label>
+                      <input v-model="namaLengkap" type="text" class="form-control" id="namaLengkap" placeholder="" value="" required>
+                      <div class="invalid-feedback">
+                        Valid Nama is required.
+                      </div>
+                    </div>
+                  </div>
+      
+                  <div class="col-md-6 mb-3">
+                    <label for="username">Username</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">@</span>
+                      </div>
+                      <input v-model="username" type="text" class="form-control" id="username" placeholder="username" required>
+                      <div class="invalid-feedback" style="width: 100%;">
+                        Your username is required.
+                      </div>
+                    </div>
+                  </div>
+      
+                  <div class="col-md-6 mb-3">
+                    <label for="password">Password</label>
+                    <input v-model="password" type="password" class="form-control" id="password" placeholder="Input your Password">
+                    <div class="invalid-feedback">
+                      Please enter a password
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                    <input v-model="email" type="email" class="form-control" id="email" placeholder="you@example.com">
+                    <div class="invalid-feedback">
+                      Please enter a valid email address for shipping updates.
+                    </div><br>
+                    <div class="mb-3">
+                    <label for="tipeUser">Tipe User :</label>
+                </div>
+                  <div class="mb-3">
+                    <div class="form-check">
+                        <input v-model="tipeUser" class="form-check-input" type="radio" name="tipeUser" id="admin" value="admin">
+                        <label class="form-check-label" for="admin">
+                          Admin
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input v-model="tipeUser" class="form-check-input" type="radio" name="tipeUser" id="pegawai" value="pegawai"  checked>
+                        <label class="form-check-label" for="pegawai">
+                          Pegawai
+                        </label>    
+                      </div>
+                  </div>
+                  </div>
+
+                  </div>
+                
+                  <hr class="mb-4">
+                  <button v-if="!editMode && !deleteMode" v-on:click="createUser" class="btn btn-primary btn-lg btn-block" type="submit">Submit Data</button>
+                  <button v-if="editMode" v-on:click="updateUser" class="btn btn-warning btn-lg btn-block" type="submit">Update Data</button>
+                  <button v-if="deleteMode" v-on:click="deleteUser" class="btn btn-danger btn-lg btn-block" type="submit">Delete Data</button>
+                  <button class="btn btn-md btn-primary pb-3 btn-block" v-on:click="resetForm()">Create new User </button>
+                </form>
+              </div>
+            </div>
+    <!-- Input dan Output Data -->
+
+    <!-- footer  -->
+    <div class="footer">
+    <footer class="my-5 pt-5 text-muted text-center fs-2 ">
+      <p class="mb-1" style="color: azure;">&copy; AMOL</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
+    </div>
+
+    <!-- footer  -->
+
+    <!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        var app = new Vue ({
+            el: '#app',
+            data: {
+                errors: [],
+                message: null,
+                users:[],
+                userIdEdit: null,
+                userIdDelete: null,
+                editMode: false,
+                deleteMode: false,
+                username: '',
+                idUser: '',
+                namaLengkap: '',
+                email: '',
+                password: '',
+                tipeUser: '',
+            },
+            mounted: function() {
+                this.getUser();
+            },
+            methods: {
+                getUser() {
+                    axios.get('https://6221c337afd560ea69b8e68f.mockapi.io/User')
+                        .then(response => {
+                            this.users = response.data;
+                            console.log(response);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                },
+                createUser: function(){
+                    axios.post('https://6221c337afd560ea69b8e68f.mockapi.io/User', {
+                        namaLengkap: this.namaLengkap,
+                        username: this.username,
+                        email: this.email,
+                        password: this.password,
+                        tipeUser: this.tipeUser,
+                    })
+                    .then(response => {
+                            this.getUser();
+                            this.message = "Your data has been submitted";
+                            console.log(response);
+                    })
+                    .catch(error => {
+                            console.log(error);
+                    });
+                },
+                resetForm: function () {
+                    this.message = null;
+                    this.editMode = false;
+                    this.deleteMode = false;
+                    this.userIdEdit = null;
+                    this.namaLengkap = null;
+                    this.username = null;
+                    this.email = null;
+                    this.password = null;
+                    this.tipeUser = null;
+                },
+                getEdit: function (user) {
+                    this.message = null;
+                    this.editMode = true;
+                    this.deleteMode = false;
+                    this.userIdEdit = user.idUser;
+                    this.namaLengkap= user.namaLengkap;
+                    this.username = user.username;
+                    this.password = user.password;
+                    this.email = user.email;
+                    this.tipeUser = user.tipeUser;
+                },
+                getDelete: function (user) {
+                    this.message = null;
+                    this.deleteMode = true;
+                    this.editMode = false;
+                    this.userIdDelete = user.idUser;
+                    this.namaLengkap = user.namaLengkap;
+                    this.username = user.username;
+                    this.password = user.password;
+                    this.email = user.email;
+                    this.tipeUser = user.tipeUser;
+                },
+                updateUser: function () {
+                    axios.put(`https://6221c337afd560ea69b8e68f.mockapi.io/User/${this.userIdEdit}`, {
+                            username: this.username,
+                            namaLengkap: this.namaLengkap,
+                            password: this.password,
+                            email: this.email,
+                            tipeUser: this.tipeUser,
+                        })
+                        .then(res => {
+                            // handle success
+                            this.message = "Your data has been updated";
+                            this.getUser();
+                        })
+                        .catch(err => {
+                            // handle error
+                            console.log(err);
+                        })
+                },
+                // Delete User
+                deleteUser: function () {
+                    axios.delete(`https://6221c337afd560ea69b8e68f.mockapi.io/User/${this.userIdDelete}`)
+                        .then(res => {
+                            // handle success
+                            this.message = "Your data has been deleted";
+                            this.getUser();
+                        })
+                        .catch(err => {
+                            // handle error
+                            console.log(err);
+                        })
+                }
+            }
+        })
+        
+    </script>
+     <!-- Axios -->
+  </body>
+</html>
